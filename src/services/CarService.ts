@@ -30,9 +30,7 @@ export default class CarService implements IModel<ICar> {
 
   public async update(_id: string, obj: ICar): Promise<ICar | null> {
     const updatedCar = car.safeParse(obj);
-    if (!updatedCar.success) {
-      throw updatedCar.error;
-    }
+    if (!updatedCar.success) throw new CustomError(400, 'Object not found');
     await this.readOne(_id);
     return this._car.update(_id, obj);
   }

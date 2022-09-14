@@ -23,7 +23,7 @@ export default abstract class MongoModel<T> implements IModel<T> {
     return this._model.create({ ...obj });
   }
 
-  public async update(_id:string, obj:Partial<T>):Promise<T | null> {
+  public async update(_id:string, obj:T):Promise<T | null> {
     if (!isValidObjectId(_id)) throw new CustomError(400, 'Id must have 24 hexadecimal characters');
 
     return this._model.findByIdAndUpdate(

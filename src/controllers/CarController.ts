@@ -39,7 +39,11 @@ export default class CarController {
     req: Request,
     res: Response<ICar | null>,
   ) {
-    const result = await this._service.update(req.params.id, req.body);
+    const {
+      status, model, year, color, buyValue, doorsQty, seatsQty } = req.body;
+    const car = { status, model, year, color, buyValue, doorsQty, seatsQty };
+
+    const result = await this._service.update(req.params.id, car);
     return res.status(200).json(result);
   }
 
