@@ -1,7 +1,8 @@
-import { Router } from 'express';
+import express = require('express');
+import carController from '../integrations';
 
-const router = Router();
+const router = express.Router();
 
-router.post('/');
+router.post('/', (req, res) => carController.create(req, res));
 
 export default router;

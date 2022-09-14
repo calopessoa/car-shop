@@ -21,8 +21,9 @@ export default class CarService implements IModel<ICar> {
 
   public async create(obj: ICar): Promise<ICar> {
     const newCar = car.safeParse(obj);
+
     if (!newCar.success) {
-      throw newCar.error;
+      throw new CustomError(400, 'Invalid data');
     }
     return this._car.create(obj);
   }
