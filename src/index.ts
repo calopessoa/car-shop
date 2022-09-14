@@ -1,10 +1,13 @@
+import 'express-async-errors';
 import 'dotenv/config';
 import app from './app';
+import globalError from './helpers/globalError';
 import connectToDatabase from './models/connection';
 
 const PORT = process.env.PORT || 3001;
 connectToDatabase()
   .then(() => {
+    app.use(globalError);
     app.listen(PORT, () => console.log(`Running server on port: ${PORT}`));
   })
   .catch((error) => {
