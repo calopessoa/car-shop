@@ -2,6 +2,8 @@ import { IModel } from '../interfaces/IModel';
 import ICar, { car } from '../interfaces/ICar';
 import CustomError from '../helpers/CustomError';
 
+const notFound = 'Object not found';
+
 export default class CarService implements IModel<ICar> {
   private _car: IModel<ICar>;
 
@@ -15,7 +17,7 @@ export default class CarService implements IModel<ICar> {
 
   public async readOne(_id: string): Promise<ICar | null> {
     const oneCar = await this._car.readOne(_id);
-    if (!oneCar) throw new CustomError(404, 'Object not found');
+    if (!oneCar) throw new CustomError(404, notFound);
     return oneCar;
   }
 
@@ -37,7 +39,7 @@ export default class CarService implements IModel<ICar> {
 
   public async delete(_id: string): Promise<ICar | null> {
     const deleteCar = await this._car.readOne(_id);
-    if (!deleteCar) throw new CustomError(404, 'Object not found');
+    if (!deleteCar) throw new CustomError(404, notFound);
     return this._car.delete(_id);
   }
 }
