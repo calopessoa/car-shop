@@ -1,5 +1,5 @@
 import { Schema } from 'mongoose';
-import ICar from './ICar';
+import { ICar } from './ICar';
 
 const carSchema = new Schema<ICar>(
   {

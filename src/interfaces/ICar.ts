@@ -6,6 +6,5 @@ const car = vehicle.extend({
   seatsQty: z.number().int().min(2).max(7),
 });
 
-type ICar = z.infer<typeof car>;
-export default ICar;
+export type ICar = z.infer<typeof car>;
 export { car };

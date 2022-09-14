@@ -1,5 +1,5 @@
 import { IModel } from '../interfaces/IModel';
-import ICar, { car } from '../interfaces/ICar';
+import { ICar, car } from '../interfaces/ICar';
 import CustomError from '../helpers/CustomError';
 
 const notFound = 'Object not found';

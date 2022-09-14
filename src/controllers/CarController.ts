@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 // import CarService from '../services/CarService';
-import ICar from '../interfaces/ICar';
+import { ICar } from '../interfaces/ICar';
 import { IModel } from '../interfaces/IModel';
 
 export default class CarController {
