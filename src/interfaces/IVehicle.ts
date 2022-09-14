@@ -9,3 +9,4 @@ const vehicle = z.object({
 });
 
 export type IVehicle = z.infer<typeof vehicle>;
+export { vehicle };

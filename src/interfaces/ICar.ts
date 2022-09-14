@@ -1,13 +1,11 @@
 import { z } from 'zod';
+import { vehicle } from './IVehicle';
 
-const car = z.object({
-  model: z.string().min(3),
-  year: z.number().min(1990).max(2021),
-  color: z.string().min(3),
-  status: z.boolean().optional(),
-  buyValue: z.number().int(),
+const car = vehicle.extend({
   doorsQty: z.number().int().min(2).max(4),
   seatsQty: z.number().int().min(2).max(7),
 });
 
-export type ICar = z.infer<typeof car>;
+type ICar = z.infer<typeof car>;
+export default ICar;
+export { car };
