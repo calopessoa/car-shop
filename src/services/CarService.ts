@@ -37,7 +37,7 @@ export default class CarService implements IModel<ICar> {
 
   public async delete(_id: string): Promise<ICar | null> {
     const deleteCar = await this._car.readOne(_id);
-    if (!deleteCar) throw new CustomError(400, 'EntityNotFound');
+    if (!deleteCar) throw new CustomError(404, 'Object not found');
     return this._car.delete(_id);
   }
 }
