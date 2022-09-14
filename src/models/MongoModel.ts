@@ -14,7 +14,7 @@ export default abstract class MongoModel<T> implements IModel<T> {
   }
 
   public async readOne(_id:string):Promise<T | null> {
-    if (!isValidObjectId(_id)) throw new CustomError(400, 'InvalidMongoId');
+    if (!isValidObjectId(_id)) throw new CustomError(400, 'Id must have 24 hexadecimal characters');
 
     return this._model.findOne({ _id });
   }
@@ -24,7 +24,7 @@ export default abstract class MongoModel<T> implements IModel<T> {
   }
 
   public async update(_id:string, obj:Partial<T>):Promise<T | null> {
-    if (!isValidObjectId(_id)) throw new CustomError(400, 'InvalidMongoId');
+    if (!isValidObjectId(_id)) throw new CustomError(400, 'Id must have 24 hexadecimal characters');
 
     return this._model.findByIdAndUpdate(
       { _id },

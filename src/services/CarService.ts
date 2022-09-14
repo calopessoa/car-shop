@@ -13,9 +13,9 @@ export default class CarService implements IModel<ICar> {
     return this._car.read();
   }
 
-  public async readOne(_id: string): Promise<ICar> {
+  public async readOne(_id: string): Promise<ICar | null> {
     const oneCar = await this._car.readOne(_id);
-    if (!oneCar) throw new CustomError(400, 'EntityNotFound');
+    if (!oneCar) throw new CustomError(404, 'Object not found');
     return oneCar;
   }
 
