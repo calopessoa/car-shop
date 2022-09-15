@@ -3,7 +3,7 @@ import chai from 'chai';
 import Car from '../../../models/CarModel';
 import CarService from '../../../services/CarService';
 import CarController from '../../../controllers/CarController';
-import { mock, mockId, mockOneDoor, mockOneSeat, mockUpdate } from '../mockCar';
+import { mock, mockId, mockUpdate } from '../mockCar';
 import CustomError from '../../../helpers/CustomError';
 import { Request, Response } from 'express';
 const { expect } = chai;
