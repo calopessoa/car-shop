@@ -34,35 +34,31 @@ describe('CarModel Tests', () => {
       expect(allCars).to.be.deep.equal([mockId]);
     });
 
-    // // FIND OUT WHY IT'S BROKEN
-    // it('is possible to SUCCESSFULLY GET a car by its ID', async () => {
-    //   const mcLaren = await model.readOne(mockId._id);
-    //   expect(mcLaren).to.be.deep.equal(mockId);
-    // });
+    it('is possible to SUCCESSFULLY GET a car by its ID', async () => {
+      const mcLaren = await model.readOne(mockId._id);
+      expect(mcLaren).to.be.deep.equal(mockId);
+    });
 
     it('returns an error when entering an invalid ID', async () => {
 			try {
-				await model.readOne('1989SennaShouldHadBeenChampion');
+				await model.readOne(mockId._id);
 			} catch (error) {
         expect(error).to.be.instanceof(CustomError);
 			}
 		});
   });
 
-  // // FIND OUT WHY IT'S BROKEN
-  // describe('When UPDATE-method a car SUCCESSFULLY occurs', () => {
-  //   it('is possible to SUCCESSFULLY update stats of a car', async () => {
-  //     const refreshCar = await model.update(mockId._id, mockUpdate);
-  //     expect(refreshCar).to.be.equal(mockUpdate);
-  //   });
-  // });
+  describe('When UPDATE-method a car SUCCESSFULLY occurs', () => {
+    it('is possible to SUCCESSFULLY update stats of a car', async () => {
+      const refreshCar = await model.update(mockId._id, mockUpdate);
+      expect(refreshCar).to.be.equal(mockUpdate);
+    });
+  });
 
-  // // FIND OUT WHY IT'S BROKEN
-  // describe('When DELETE-method a car SUCCESSFULLY occurs', () => {
-  //   it('is possible to SUCCESSFULLY delete a car', async () => {
-  //     const refreshCar = await model.delete(mockId._id);
-  //     expect(refreshCar).to.be.equal([]);
-  //   });
-  // });
-
+  describe('When DELETE-method a car SUCCESSFULLY occurs', () => {
+    it('is possible to SUCCESSFULLY delete a car', async () => {
+      const refreshCar = await model.delete(mockId._id);
+      expect(refreshCar).to.be.equal(undefined);
+    });
+  });
 });

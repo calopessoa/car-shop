@@ -113,7 +113,7 @@ describe('CarService Tests', () => {
 
         it('throws an error', async () => {
           try {
-            await carService.readOne('12345678901234567892123');
+            await carService.readOne('In1989SennaTrueChampion');
           } catch(err) {
             expect(err).to.be.instanceof(CustomError);
           }
@@ -138,9 +138,16 @@ describe('CarService Tests', () => {
       const result = await carService.update(mockId._id, mockUpdate);
       expect(result).to.be.eqls(mockUpdate);
     });
+
+    it('throws an error', async () => {
+      try {
+        await carService.update(mockId._id, {} as any);
+      } catch(err) {
+        expect(err).to.be.instanceof(CustomError);
+      }
+    });
   });
 
-  // NOT REALLY WORKING - TO DO PROPERLY
   describe('DELETE method, on "delete" a car from db', () => {
     before(() => {
       sinon.stub(model, 'readOne')
@@ -159,6 +166,13 @@ describe('CarService Tests', () => {
       const result = await carService.delete(mockId._id);
       expect(result).to.be.eqls(undefined);
     });
-  });
 
+    it('throws an error', async () => {
+      try {
+        await carService.delete('In1989SennaTrueChampion');
+      } catch(err) {
+        expect(err).to.be.instanceof(CustomError);
+      }
+    });
+  });
 });
